@@ -1,5 +1,7 @@
 <template>
-  <p>This is default page</p>
+  <div class="container">
+    <button class="btn">button</button>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -8,4 +10,10 @@ definePageMeta({
 });
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+@import "~/assets/main.scss";
+
+header {
+  background-color: $d-green;
+}
+</style>

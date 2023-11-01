@@ -1,0 +1,27 @@
+$d-green: #14281d;
+$s-green: #52e23c;
+$l-green: #d3f6db;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: Rubik, sans-serif;
+  }
+  p {
+    font-family: Poppins, sans-serif;
+  }
+  .btn {
+    margin: 5px;
+    background-color: $d-green;
+    border-color: transparent;
+    border-radius: 6px;
+    color: white;
+    padding: 0.5rem 1rem;
+  }
+}

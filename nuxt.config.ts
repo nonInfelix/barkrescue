@@ -5,5 +5,20 @@ export default defineNuxtConfig({
     typeCheck: true,
   },
   css: ["~/assets/main.scss"],
-  modules: ["@nuxtjs/eslint-module", "nuxt-icon", "@nuxtjs/supabase"],
+  modules: [
+    "nuxt-icon",
+    "@nuxtjs/supabase",
+    [
+      "@nuxtjs/google-fonts",
+      {
+        families: {
+          Rubik: true,
+          Poppins: true,
+        },
+      },
+    ],
+  ],
+  supabase: {
+    redirect: false,
+  },
 });
