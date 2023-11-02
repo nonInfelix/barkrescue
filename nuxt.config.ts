@@ -12,7 +12,7 @@ export default defineNuxtConfig({
       "@nuxtjs/google-fonts",
       {
         families: {
-          Rubik: true,
+          Nunito: true,
           Poppins: true,
         },
       },

@@ -11,17 +11,21 @@ $l-green: #d3f6db;
   h2,
   h3,
   h4 {
-    font-family: Rubik, sans-serif;
+    font-family: Nunito, sans-serif;
   }
   p {
     font-family: Poppins, sans-serif;
   }
-  .btn {
-    margin: 5px;
-    background-color: $d-green;
-    border-color: transparent;
-    border-radius: 6px;
-    color: white;
-    padding: 0.5rem 1rem;
-  }
+}
+.btn {
+  margin: 5px;
+  background-color: $d-green;
+  border-color: transparent;
+  border-radius: 6px;
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+.container {
+  padding: 10px 10px 0 10px;
 }
