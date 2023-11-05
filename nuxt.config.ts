@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   modules: [
     "nuxt-icon",
     "@nuxtjs/supabase",
+    "@pinia/nuxt",
     [
       "@nuxtjs/google-fonts",
       {
