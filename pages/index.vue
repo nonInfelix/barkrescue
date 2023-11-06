@@ -4,7 +4,9 @@
       Finden Sie Ihr perfektes Familienmitglied auf vier Pfoten
     </h2>
     <div class="button-container">
-      <button class="btn">Hund adoptieren</button>
+      <button @click="router.push({ path: '/dogs/all' })" class="btn">
+        Hund adoptieren
+      </button>
       <button class="btn">Hund freigeben</button>
     </div>
   </main>
@@ -41,6 +43,7 @@
 definePageMeta({
   layout: "default",
 });
+const router = useRouter();
 </script>
 
 <style lang="scss" scoped>
