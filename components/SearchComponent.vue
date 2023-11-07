@@ -48,11 +48,16 @@ const dogGender = ref<string>("");
 const dogAge = ref<string>("");
 const selectedBreed = ref<string>("all");
 
-//über store fetchen
-const breeds = computed(() => [
-  { text: "Alle Rassen", value: "all" },
-  ...store.dogSearch.sort((a, b) => a.text.localeCompare(b.text)),
-]);
+const breeds = computed(() => {
+  if (store.dogSearch !== null) {
+    return [
+      { text: "Alle Rassen", value: "all" },
+      ...store.dogSearch.sort((a, b) => a.text.localeCompare(b.text)),
+    ];
+  } else {
+    return [{ text: "Alle Rassen", value: "all" }];
+  }
+});
 onMounted(() => {
   store.fetchDogs();
 });

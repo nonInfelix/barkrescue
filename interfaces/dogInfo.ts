@@ -4,7 +4,7 @@ enum dogCategory {
   groß = "große hunde",
 }
 
-export default interface dogInfo {
+export default interface DogInfo {
   id: string;
   name: string;
   img: string;
@@ -19,8 +19,4 @@ export default interface dogInfo {
   sports: string;
   character: string;
   category: dogCategory;
-}
-export default interface DogSearchInfo {
-  text: string;
-  value: string;
 }
