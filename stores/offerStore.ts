@@ -21,15 +21,38 @@ export const useOfferStore = defineStore("offer", {
   state: () => {
     return {
       offers: [] as DogOffer[] | null,
-      search: {} as string[],
+      queryTEST: null as any,
     };
   },
   actions: {
     async fetchAllOffers() {
       this.offers = [];
-      const { data } = await $fetch("/api/alloffers");
-      if (data !== null) {
-        this.offers = data;
+      // behebt unknown Fehler
+      const response = (await $fetch("/api/alloffers")) as {
+        data: DogOffer[];
+      };
+      if (response.data !== null) {
+        this.offers = response.data;
+      }
+    },
+    async fetchSpecificOffers(
+      page: number,
+      location: string,
+      breedID: string,
+      age: number,
+      gender: string
+    ) {
+      this.offers = [];
+      const response = (await $fetch(
+        `/api/specificoffer?page=${page}&location=${location}&breedID=${breedID}&age=${age}&gender=${gender}`
+      )) as {
+        data: DogOffer[];
+        query: any;
+      };
+      console.log(response);
+      if (response.data !== null) {
+        this.offers = response.data;
+        this.queryTEST = response.query;
       }
     },
   },

@@ -4,7 +4,7 @@
       Finden Sie Ihr perfektes Familienmitglied auf vier Pfoten
     </h2>
     <div class="button-container">
-      <button @click="router.push({ path: '/dogs/all' })" class="btn">
+      <button @click="router.push({ path: '/dogs' })" class="btn">
         Hund adoptieren
       </button>
       <button class="btn">Hund freigeben</button>

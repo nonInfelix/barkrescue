@@ -6,6 +6,7 @@
       name="city"
       type="text"
       class="searchbox-city"
+      v-model="city"
     />
 
     <select v-model="selectedBreed" class="searchbox-breed">
@@ -29,19 +30,22 @@
       <input type="radio" id="male" value="male" v-model="dogGender" />
       <label for="male">männlich</label>
     </div>
-    <button class="btn searchbox-button">Hund suchen</button>
+    <button @click="getDogs" class="btn searchbox-button">Hund suchen</button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useDogStore } from "~/stores/dogStore";
+import { useOfferStore } from "~/stores/offerStore";
 
 const dogStore = useDogStore();
+const offerStore = useOfferStore();
 
 const page = ref<number>(1);
-const dogGender = ref<string>("");
-const dogAge = ref<string>("");
-const selectedBreed = ref<string>("all");
+const city = ref<string>("chemnitz");
+const dogGender = ref<string>("female");
+const dogAge = ref<number>(99);
+const selectedBreed = ref<string>("WEWEQWEGRLG");
 
 const breeds = computed(() => {
   if (dogStore.dogSearch !== null) {
@@ -53,6 +57,16 @@ const breeds = computed(() => {
     return [{ text: "Alle Rassen", value: "all" }];
   }
 });
+
+function getDogs() {
+  offerStore.fetchSpecificOffers(
+    page.value,
+    city.value,
+    selectedBreed.value,
+    dogAge.value,
+    dogGender.value
+  );
+}
 onMounted(() => {
   dogStore.fetchDogs();
 });
