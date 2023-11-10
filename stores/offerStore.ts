@@ -15,13 +15,13 @@ interface DogOffer {
   shelter_id: string;
   dog_id: string;
   gender: gender;
+  shelters: Object;
 }
 
 export const useOfferStore = defineStore("offer", {
   state: () => {
     return {
       offers: [] as DogOffer[] | null,
-      queryTEST: null as any,
     };
   },
   actions: {
@@ -35,24 +35,16 @@ export const useOfferStore = defineStore("offer", {
         this.offers = response.data;
       }
     },
-    async fetchSpecificOffers(
-      page: number,
-      location: string,
-      breedID: string,
-      age: number,
-      gender: string
-    ) {
+    async fetchByCity(location: string) {
       this.offers = [];
       const response = (await $fetch(
-        `/api/specificoffer?page=${page}&location=${location}&breedID=${breedID}&age=${age}&gender=${gender}`
+        `/api/specificoffer?location=${location}`
       )) as {
         data: DogOffer[];
-        query: any;
       };
       console.log(response);
       if (response.data !== null) {
         this.offers = response.data;
-        this.queryTEST = response.query;
       }
     },
   },

@@ -12,7 +12,6 @@
       </div>
     </div>
   </div>
-  <p>{{ offerStore.queryTEST }}</p>
 </template>
 
 <script setup lang="ts">
