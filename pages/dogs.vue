@@ -1,5 +1,6 @@
 <template>
   <SearchComponent></SearchComponent>
+  <ShortOfferComponent></ShortOfferComponent>
 </template>
 
 <script setup lang="ts">

@@ -38,7 +38,6 @@ export const useDogStore = defineStore("dogs", {
           value: dog.id,
         }));
       }
-      console.log(data);
     },
   },
 });
