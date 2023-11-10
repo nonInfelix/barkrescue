@@ -2,7 +2,12 @@ enum gender {
   male = "male",
   female = "female",
 }
-
+interface Dogs {
+  name: String;
+}
+interface Shelters {
+  location: String;
+}
 interface DogOffer {
   id: string;
   name: string;
@@ -14,14 +19,16 @@ interface DogOffer {
   isActive: boolean;
   shelter_id: string;
   dog_id: string;
+  dogs: Dogs;
   gender: gender;
-  shelters: Object;
+  shelters: Shelters;
 }
 
 export const useOfferStore = defineStore("offer", {
   state: () => {
     return {
       offers: [] as DogOffer[] | null,
+      currentLocation: "Alle Regionen",
     };
   },
   actions: {
@@ -36,6 +43,7 @@ export const useOfferStore = defineStore("offer", {
       }
     },
     async fetchByCity(location: string) {
+      this.currentLocation = location;
       this.offers = [];
       const response = (await $fetch(
         `/api/specificoffer?location=${location}`

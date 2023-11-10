@@ -9,7 +9,8 @@ export default defineEventHandler(async (event) => {
     .select(
       `
     *, 
-    shelters!inner(*)`
+    shelters!inner(location),
+    dogs!inner(name)`
     )
     .eq("shelters.location", params.location as String);
 
