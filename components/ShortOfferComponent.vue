@@ -74,12 +74,16 @@ NuxtLink {
   margin: 1rem 1rem 2rem 1rem;
   border-radius: 15px;
   border: 1px solid $font-color;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .card {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  border-radius: 15px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .card-breed {
   width: 50%;
@@ -117,6 +121,8 @@ NuxtLink {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   gap: 5px;
+  box-shadow: rgba(26, 101, 26, 0.5) 0px 30px 60px -12px inset,
+    rgba(26, 101, 26, 0.288) 0px 18px 36px -18px inset;
 }
 .card-details-name {
   grid-column: 1/-1;
