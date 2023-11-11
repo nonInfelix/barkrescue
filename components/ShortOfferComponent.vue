@@ -5,7 +5,12 @@
   <div class="container">
     <div class="card-container" v-for="offer of offerStore.offers">
       <div class="card">
-        <div class="card-breed">{{ offer.dogs.name }}</div>
+        <div class="card-breed">
+          {{ offer.dogs.name }}
+        </div>
+        <div class="card-location">
+          {{ offer.shelters.location }}
+        </div>
         <img :src="offer.main_img" alt="" class="card-image" />
         <div class="card-details">
           <h3 class="card-details-name">{{ offer.name }}</h3>
@@ -76,6 +81,15 @@ $font-color: rgb(255, 255, 255);
   padding-left: 10px;
   background-color: rgba(48, 48, 48, 0.664);
   border-radius: 15px 0 0 0;
+}
+.card-location {
+  position: absolute;
+  background-color: $l-green;
+  left: 0;
+  bottom: 0;
+  border-radius: 0 15px 0 15px;
+  padding: 0 10px 0 10px;
+  color: $d-green;
 }
 .card-image {
   width: 100%;
