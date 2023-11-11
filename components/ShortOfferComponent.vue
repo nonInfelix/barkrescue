@@ -15,11 +15,9 @@
         <div class="card-details">
           <h3 class="card-details-name">{{ offer.name }}</h3>
           <div v-if="offer.gender == 'male'" class="card-details-gender">
-            <p>Rüde</p>
             <Icon name="ph:gender-male-bold" color="white" size="30px"></Icon>
           </div>
           <div v-else class="card-details-gender">
-            <p>Hündin</p>
             <Icon name="ph:gender-female-bold" color="white" size="30px"></Icon>
           </div>
           <p class="card-details-age">{{ offer.age }} Jahr/e</p>
@@ -27,6 +25,11 @@
             {{ offer.health_status }}
           </p>
           <button class="card-button">Mehr anzeigen</button>
+          <Icon
+            name="teenyicons:paw-solid"
+            size="40px"
+            class="card-icon"
+          ></Icon>
         </div>
       </div>
     </div>
@@ -49,6 +52,9 @@ $font-color: rgb(255, 255, 255);
 * {
   font-family: Poppins, sans-serif;
   color: $font-color;
+}
+NuxtLink {
+  display: none;
 }
 .offer-location {
   margin-top: 1.5rem;
@@ -160,5 +166,80 @@ $font-color: rgb(255, 255, 255);
   align-self: center;
   justify-self: center;
   cursor: pointer;
+}
+.card-icon {
+  display: none;
+}
+@media screen and (max-width: 576px) {
+  .card-container {
+    margin-bottom: 5rem;
+  }
+  .card-image {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    border-radius: 15px 15px 0 0;
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    //verhindert verzerrung
+    object-fit: cover;
+  }
+  .card-details {
+    max-width: 300px;
+    background-color: $d-green;
+    border-radius: 0 0 15px 15px;
+    grid-column: 1/-1;
+    grid-row: 2/-1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  .card-details-gender {
+    position: absolute;
+    display: block;
+    left: 5px;
+    top: -35px;
+  }
+  .card-details-age {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    justify-self: center;
+    align-self: center;
+    font-size: 1.2rem;
+  }
+  .card-details-health {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    justify-self: center;
+    align-self: end;
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 0 0.5rem 0 0.5rem;
+  }
+  .card-button {
+    display: none;
+  }
+  .card-location {
+    position: absolute;
+    display: inline-block;
+    z-index: 1;
+    height: 1.5rem;
+    width: auto;
+    background-color: $l-green;
+    border-radius: 0 15px 0 15px;
+    padding: 0 10px 0 10px;
+    color: $d-green;
+  }
+  .card-breed {
+    border-radius: 15px 15px 0 0;
+    width: 100%;
+  }
+  .card-icon {
+    display: block;
+    justify-self: center;
+    align-self: center;
+    grid-column: 1/-1;
+    grid-row: 3/-1;
+  }
 }
 </style>
