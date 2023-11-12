@@ -2,13 +2,13 @@ enum gender {
   male = "male",
   female = "female",
 }
-interface Dogs {
-  name: String;
+interface shortInfoDogs {
+  name: string;
 }
-interface Shelters {
-  location: String;
+interface shortInfoShelters {
+  location: string;
 }
-interface DogOffer {
+interface shortInfoDogOffer {
   id: string;
   name: string;
   main_img: string;
@@ -19,16 +19,57 @@ interface DogOffer {
   isActive: boolean;
   shelter_id: string;
   dog_id: string;
-  dogs: Dogs;
+  dogs: shortInfoDogs;
   gender: gender;
-  shelters: Shelters;
+  shelters: shortInfoShelters;
+}
+interface InfoDogs {
+  name: string;
+  img: string;
+  size: string;
+  weight: string;
+  fci_group: string;
+  section: string;
+  origin_country: string;
+  color: string;
+  lifespan: string;
+  role: string;
+  sports: string;
+  character: string;
+  category: string;
+  id: string;
+}
+
+interface InfoShelters {
+  id: string;
+  name: string;
+  location: string;
+  logo_img: string;
+}
+
+interface InfoDogOffer {
+  id: string;
+  name: string;
+  main_img: string;
+  add_imgs: string[];
+  age: number;
+  description: string;
+  health_status: string;
+  isActive: boolean;
+  shelter_id: string;
+  dog_id: string;
+  dogs: InfoDogs;
+  gender: gender;
+  shelters: InfoShelters;
 }
 
 export const useOfferStore = defineStore("offer", {
   state: () => {
     return {
-      offers: [] as DogOffer[] | null,
+      offers: [] as shortInfoDogOffer[] | null,
       currentLocation: "Alle Regionen",
+      currentDogID: null as string | null,
+      currentDog: [] as InfoDogOffer[],
     };
   },
   actions: {
@@ -36,7 +77,7 @@ export const useOfferStore = defineStore("offer", {
       this.offers = [];
       // behebt unknown Fehler
       const response = (await $fetch("/api/alloffers")) as {
-        data: DogOffer[];
+        data: shortInfoDogOffer[];
       };
       if (response.data !== null) {
         this.offers = response.data;
@@ -48,11 +89,21 @@ export const useOfferStore = defineStore("offer", {
       const response = (await $fetch(
         `/api/specificoffer?location=${location}`
       )) as {
-        data: DogOffer[];
+        data: shortInfoDogOffer[];
       };
       console.log(response);
       if (response.data !== null) {
         this.offers = response.data;
+      }
+    },
+    async fetchByID(id: string) {
+      this.currentDogID = id;
+      const response = (await $fetch(`/api/offer/${id}`)) as {
+        data: InfoDogOffer[];
+      };
+      console.log(response);
+      if (response.data !== null) {
+        this.currentDog = response.data;
       }
     },
   },
