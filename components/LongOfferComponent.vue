@@ -103,29 +103,25 @@ h1 {
   justify-content: center;
 }
 .dog-age {
-  background-color: rgb(245, 231, 245);
-  border: 1px solid rgb(255, 164, 255);
+  background-color: white;
   border-radius: 30px;
   padding: 3px 10px 3px 10px;
   margin: 0 0.5rem 1rem 0.5rem;
 }
 .dog-gender {
-  background-color: rgb(227, 227, 245);
-  border: 1px solid rgb(148, 148, 255);
+  background-color: white;
   border-radius: 30px;
   padding: 3px 10px 3px 10px;
   margin: 0 0.5rem 1rem 0.5rem;
 }
 .dog-health {
-  background-color: rgb(230, 255, 230);
-  border: 1px solid rgb(69, 146, 69);
+  background-color: white;
   border-radius: 30px;
   padding: 3px 10px 3px 10px;
   margin: 0 0.5rem 1rem 0.5rem;
 }
 .dog-shelter {
-  background-color: rgb(255, 210, 210);
-  border: 1px solid rgb(255, 163, 163);
+  background-color: white;
   border-radius: 30px;
   padding: 3px 10px 3px 10px;
   margin: 0 0.5rem 1rem 0.5rem;
