@@ -58,6 +58,7 @@ NuxtLink {
   margin-bottom: 1rem;
 }
 .shelter h2 {
+  align-self: start;
   grid-row: 1/2;
 }
 .shelter p {
