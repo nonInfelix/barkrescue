@@ -133,6 +133,7 @@ h1 {
   margin-bottom: 1rem;
   justify-self: center;
   height: 250px;
+  width: 100%;
   object-fit: cover;
   border: transparent;
   border-radius: 15px;
@@ -191,10 +192,13 @@ h1 {
   cursor: pointer;
 }
 .breed-container {
+  width: 100%;
   border-radius: 15px;
   border-color: $d-green;
   padding: 0.5rem 1.5rem;
   display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
   border: 2px solid grey;
   margin-bottom: 1rem;
 }
@@ -202,6 +206,7 @@ h1 {
   margin-bottom: 1rem;
   justify-self: center;
   height: 250px;
+  width: 100%;
   object-fit: cover;
   border: transparent;
   clip-path: circle();
@@ -211,10 +216,11 @@ h1 {
   font-size: 2rem;
 }
 table {
-  width: 100%;
-  border-collapse: collapse; /* Entfernt doppelte Ränder zwischen Zellen */
   margin-bottom: 20px;
+  width: 100%;
   font-family: Poppins, sans-serif;
+  border-collapse: collapse;
+  table-layout: fixed; /* Feste Tabellenbreite */
 }
 
 th {
@@ -222,11 +228,15 @@ th {
   background-color: #f2f2f2;
   padding: 8px;
   width: 170px;
+  word-wrap: break-word; /* Erlaubt das Umbruch von Wörtern in der Zelle */
+  overflow-wrap: break-word;
 }
 
 td {
   text-align: left;
   padding: 8px;
+  word-wrap: break-word; /* Erlaubt das Umbruch von Wörtern in der Zelle */
+  overflow-wrap: break-word;
 }
 
 /* Styling für Tabellenzeilen */
