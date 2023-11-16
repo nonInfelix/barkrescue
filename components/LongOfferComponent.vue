@@ -79,7 +79,7 @@
         </tbody>
       </table>
     </section>
-    <NuxtLink :to="`/shelters/${shelter.id}`" style="text-decoration: none">
+    <NuxtLink :to="`/shelter/${shelter.id}`" style="text-decoration: none">
       <div class="shelter-container">
         <h2>Info zum Tierheim</h2>
         <p>{{ shelter.name }}</p>
