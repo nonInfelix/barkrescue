@@ -1,7 +1,9 @@
 <template>
   <header>
-    <img src="../assets/dog-logo.png" alt="logo-dog" />
-    <h1>BarkRescue</h1>
+    <NuxtLink :to="`/`" display="none">
+      <img src="../assets/dog-logo.png" alt="logo-dog" />
+      <h1>BarkRescue</h1>
+    </NuxtLink>
     <button>Registrierung</button>
   </header>
 </template>

@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
     .select(
       `
     *, 
-    shelter_dogs!inner(name, main_img)`
+    shelter_dogs!inner(id,name, main_img)`
     )
     .eq("id", id as string);
 
