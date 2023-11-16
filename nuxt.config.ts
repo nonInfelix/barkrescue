@@ -13,7 +13,7 @@ export default defineNuxtConfig({
       "@nuxtjs/google-fonts",
       {
         families: {
-          Nunito: true,
+          Agbalumo: true,
           Poppins: true,
         },
       },

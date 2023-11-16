@@ -4,34 +4,40 @@
   </h2>
   <div class="container">
     <div class="card-container" v-for="offer of offerStore.offers">
-      <div class="card">
-        <div class="card-breed">
-          {{ offer.dogs.name }}
-        </div>
-        <div class="card-location">
-          {{ offer.shelters.location }}
-        </div>
-        <img :src="offer.main_img" alt="" class="card-image" />
-        <div class="card-details">
-          <h3 class="card-details-name">{{ offer.name }}</h3>
-          <div v-if="offer.gender == 'male'" class="card-details-gender">
-            <Icon name="ph:gender-male-bold" color="white" size="30px"></Icon>
+      <NuxtLink :to="`/dogs/${offer.id}`" style="text-decoration: none">
+        <div class="card">
+          <div class="card-breed">
+            {{ offer.dogs.name }}
           </div>
-          <div v-else class="card-details-gender">
-            <Icon name="ph:gender-female-bold" color="white" size="30px"></Icon>
+          <div class="card-location">
+            {{ offer.shelters.location }}
           </div>
-          <p class="card-details-age">{{ offer.age }} Jahr/e</p>
-          <p class="card-details-health">
-            {{ offer.health_status }}
-          </p>
-          <button class="card-button">Mehr anzeigen</button>
-          <Icon
-            name="teenyicons:paw-solid"
-            size="40px"
-            class="card-icon"
-          ></Icon>
+          <img :src="offer.main_img" alt="" class="card-image" />
+          <div class="card-details">
+            <h3 class="card-details-name">{{ offer.name }}</h3>
+            <div v-if="offer.gender == 'male'" class="card-details-gender">
+              <Icon name="ph:gender-male-bold" color="white" size="30px"></Icon>
+            </div>
+            <div v-else class="card-details-gender">
+              <Icon
+                name="ph:gender-female-bold"
+                color="white"
+                size="30px"
+              ></Icon>
+            </div>
+            <p class="card-details-age">{{ offer.age }} Jahr/e</p>
+            <p class="card-details-health">
+              {{ offer.health_status }}
+            </p>
+            <button class="card-button">Mehr anzeigen</button>
+            <Icon
+              name="teenyicons:paw-solid"
+              size="40px"
+              class="card-icon"
+            ></Icon>
+          </div>
         </div>
-      </div>
+      </NuxtLink>
     </div>
   </div>
 </template>
@@ -48,6 +54,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 @import "~/assets/main.scss";
+
 $font-color: rgb(255, 255, 255);
 * {
   font-family: Poppins, sans-serif;
