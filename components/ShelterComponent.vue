@@ -50,7 +50,7 @@ NuxtLink {
 }
 .shelter {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   grid-template-rows: 1fr repeat(3, 1.5rem);
   align-items: end;
   gap: 0 0.5rem;
