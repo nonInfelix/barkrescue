@@ -1,6 +1,8 @@
 <template>
   <header>
-    <img src="../assets/dog-logo.png" alt="logo-dog" />
+    <NuxtLink :to="`/`" display="none">
+      <img src="../assets/dog-logo.png" alt="logo-dog" />
+    </NuxtLink>
     <h1>BarkRescue</h1>
     <button>Registrierung</button>
   </header>
@@ -26,6 +28,7 @@ header {
     left: 60px;
     grid-column: 1/1;
     color: white;
+    font-size: 1.7rem;
   }
   button {
     font-size: 1rem;

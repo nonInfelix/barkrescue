@@ -76,34 +76,27 @@ export const useOfferStore = defineStore("offer", {
     async fetchAllOffers() {
       this.offers = [];
       // behebt unknown Fehler
-      const response = (await $fetch("/api/alloffers")) as {
-        data: shortInfoDogOffer[];
-      };
-      if (response.data !== null) {
-        this.offers = response.data;
+      const { data } = await $fetch("/api/alloffers");
+
+      if (data !== null) {
+        this.offers = data as shortInfoDogOffer[];
       }
     },
     async fetchByCity(location: string) {
       this.currentLocation = location;
       this.offers = [];
-      const response = (await $fetch(
-        `/api/specificoffer?location=${location}`
-      )) as {
-        data: shortInfoDogOffer[];
-      };
-      console.log(response);
-      if (response.data !== null) {
-        this.offers = response.data;
+      const { data } = await $fetch(`/api/specificoffer?location=${location}`);
+      console.log(data);
+      if (data !== null) {
+        this.offers = data as shortInfoDogOffer[];
       }
     },
     async fetchByID(id: string) {
       this.currentDogID = id;
-      const response = (await $fetch(`/api/offer/${id}`)) as {
-        data: InfoDogOffer[];
-      };
-      console.log(response);
-      if (response.data !== null) {
-        this.currentDog = response.data;
+      const { data } = await $fetch(`/api/offer/${id}`);
+      console.log(data);
+      if (data !== null) {
+        this.currentDog = data as InfoDogOffer[];
       }
     },
   },
