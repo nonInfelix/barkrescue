@@ -6,7 +6,8 @@ interface User {
 export const useUserStore = defineStore("user", {
   state: () => {
     return {
-      user: {} as User,
+      user: {} as any,
+      isLoggedin: false,
     };
   },
   actions: {
@@ -16,6 +17,14 @@ export const useUserStore = defineStore("user", {
         body: { email: email, password: password } as User,
       });
       console.log(data);
+    },
+    async signInUser(email: string, password: string) {
+      const { data } = await $fetch(`/api/user/signIn`, {
+        method: "POST",
+        body: { email: email, password: password } as User,
+      });
+      console.log(data.user);
+      this.user = data.user;
     },
   },
 });

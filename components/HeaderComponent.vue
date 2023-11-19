@@ -4,7 +4,7 @@
       <img src="../assets/dog-logo.png" alt="logo-dog" />
     </NuxtLink>
     <h1>BarkRescue</h1>
-    <button>Registrierung</button>
+    <button @click="$router.push('/user/signup')">Registrierung</button>
   </header>
 </template>
 <style lang="scss" scoped>
