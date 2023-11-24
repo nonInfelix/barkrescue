@@ -25,5 +25,13 @@ export default defineNuxtConfig({
     cookieOptions: {
       secure: false,
     },
+    clientOptions: {
+      auth: {
+        flowType: "implicit",
+        detectSessionInUrl: true,
+        persistSession: true,
+        autoRefreshToken: true,
+      },
+    },
   },
 });
