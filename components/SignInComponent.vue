@@ -3,7 +3,6 @@
   <input v-model="password" type="password" />
   <button @click="userStore.signInUser(email, password)">Login</button>
   <button @click="$router.push(`/user/account`)">mein Bereich</button>
-  <div>{{ userStore.user.id }}</div>
 </template>
 
 <script setup lang="ts">
