@@ -22,5 +22,16 @@ export default defineNuxtConfig({
   ],
   supabase: {
     redirect: false,
+    cookieOptions: {
+      secure: false,
+    },
+    clientOptions: {
+      auth: {
+        flowType: "implicit",
+        detectSessionInUrl: true,
+        persistSession: true,
+        autoRefreshToken: true,
+      },
+    },
   },
 });

@@ -10,11 +10,7 @@ export default defineEventHandler(async (event) => {
 
   const { data, error } = await supabase
     .from("shelters")
-    .select(
-      `*,
-    shelter_dogs!inner(*)
-    `
-    )
+    .select("*")
     .eq("user_id", user.id);
 
   return { data, error };
