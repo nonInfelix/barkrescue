@@ -1,11 +1,11 @@
 <template>
-  <h1>mein Account</h1>
+  <UserComponent></UserComponent>
 </template>
 
 <script setup lang="ts">
-const userData = ref<any>();
-
-onMounted(() => {});
+definePageMeta({
+  middleware: "auth",
+});
 </script>
 
 <style scoped></style>
