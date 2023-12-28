@@ -2,6 +2,10 @@ $d-green: #14281d;
 $s-green: #52e23c;
 $l-green: #d3f6db;
 
+html,
+body {
+  height: 100%;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,7 +17,8 @@ $l-green: #d3f6db;
   }
   p,
   h3,
-  h4 {
+  h4,
+  label {
     font-family: Poppins, sans-serif;
   }
 }
