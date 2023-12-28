@@ -1,16 +1,17 @@
-interface Shelter {
-  id: string;
-  created_at: string;
+export interface Shelter {
+  id?: string | any;
+  created_at?: string | any;
   location: string;
   street: string;
-  street_number: number;
+  street_number: string;
   zip_code: number;
   email: string;
   registergericht: string;
   registernummer: string;
-  logo_img: string;
+  logo_img: string | any;
   name: string;
   shelter_dogs: Dog | null;
+  user_id: string | any;
 }
 interface Dog {
   id: string;
@@ -27,10 +28,16 @@ export const useShelterStore = defineStore("shelter", {
   },
   actions: {
     async fetchShelter(id: string) {
-      const { data } = await $fetch(`/api/shelter/${id}`);
+      const { data } = await $fetch<any>(`/api/shelter/${id}`);
       this.shelters = data as Shelter[];
       this.dogs = this.shelters[0].shelter_dogs as Dog[] | null;
       console.log("shelter-data:  ", this.shelters);
+    },
+    async createShelter(shelter: Shelter) {
+      const { data } = await $fetch<any>("/api/shelter/create", {
+        method: "POST",
+        body: shelter,
+      });
     },
   },
 });
