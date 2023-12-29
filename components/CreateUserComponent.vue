@@ -31,22 +31,22 @@ import { type Shelter } from "../stores/shelterStore";
 const supabase = useSupabaseClient();
 const shelterStore = useShelterStore();
 
-const email = ref<string>("");
-const password = ref<string>("");
+const email = ref<string>("noninfelix+test@gmail.com");
+const password = ref<string>("test123");
 
-const name = ref<string>("");
-const location = ref<string>("");
-const street = ref<string>("");
-const streetNumber = ref<string>("");
+const name = ref<string>("name");
+const location = ref<string>("Ort");
+const street = ref<string>("Straße");
+const streetNumber = ref<string>("99");
 const zipCode = ref<number>(99999);
-const publicEmail = ref<string>("");
-const register = ref<string>("");
-const registerNumber = ref<string>("");
+const publicEmail = ref<string>("testmail@temi3x.org");
+const register = ref<string>("register");
+const registerNumber = ref<string>("register99");
+
+const id = ref<string | undefined>("");
 
 async function signUp(mail: string, pw: string) {
-  const shelter: Shelter = {
-    id: null,
-    created_at: null,
+  const shelter = {
     location: location.value,
     street: street.value,
     street_number: streetNumber.value,
@@ -56,18 +56,17 @@ async function signUp(mail: string, pw: string) {
     registernummer: registerNumber.value,
     logo_img: null,
     name: name.value,
-    shelter_dogs: null,
-    user_id: null,
   };
-
   const { data } = await supabase.auth.signUp({
     email: mail,
     password: pw,
   });
-  console.log("signup data:  ", data, "supabase:  ", supabase);
-  shelter.user_id = data.user?.id;
-  const response = await shelterStore.createShelter(shelter);
-  console.log(response);
+  if (data.user !== null) {
+    id.value = data.user.id;
+    console.log("signup data:  ", data, "supabase:  ", supabase);
+    const response = await shelterStore.createShelter(shelter, id.value);
+    console.log(response);
+  }
 }
 </script>
 

@@ -10,7 +10,7 @@ export interface Shelter {
   registernummer: string;
   logo_img: string | any;
   name: string;
-  shelter_dogs: Dog | null;
+  shelter_dogs?: Dog | null;
   user_id: string | any;
 }
 interface Dog {
@@ -33,11 +33,12 @@ export const useShelterStore = defineStore("shelter", {
       this.dogs = this.shelters[0].shelter_dogs as Dog[] | null;
       console.log("shelter-data:  ", this.shelters);
     },
-    async createShelter(shelter: Shelter) {
-      const { data } = await $fetch<any>("/api/shelter/create", {
+    async createShelter(shelter: any, userId: string) {
+      const response = await $fetch<any>("/api/shelter/create", {
         method: "POST",
-        body: shelter,
+        body: { shelter: shelter, user_id: userId },
       });
+      return response;
     },
   },
 });
