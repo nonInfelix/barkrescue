@@ -1,9 +1,11 @@
 <template>
   <div class="container">
+    <h2>Registrieren</h2>
     <label for="email">E-Mail</label>
-    <input v-model="email" type="text" id="email" />
+    <input class="signup" v-model="email" type="text" id="email" />
     <label for="password">Passwort</label>
-    <input v-model="password" type="password" id="password" />
+    <input class="signup" v-model="password" type="password" id="password" />
+    <h2>Profildaten</h2>
     <div class="info">
       <label for="name">Name</label>
       <input v-model="name" type="text" id="name" />
@@ -27,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { type Shelter } from "../stores/shelterStore";
+const router = useRouter();
 const supabase = useSupabaseClient();
 const shelterStore = useShelterStore();
 
@@ -42,8 +44,6 @@ const zipCode = ref<number>(99999);
 const publicEmail = ref<string>("testmail@temi3x.org");
 const register = ref<string>("register");
 const registerNumber = ref<string>("register99");
-
-const id = ref<string | undefined>("");
 
 async function signUp(mail: string, pw: string) {
   const shelter = {
@@ -62,10 +62,10 @@ async function signUp(mail: string, pw: string) {
     password: pw,
   });
   if (data.user !== null) {
-    id.value = data.user.id;
     console.log("signup data:  ", data, "supabase:  ", supabase);
-    const response = await shelterStore.createShelter(shelter, id.value);
+    const response = await shelterStore.createShelter(shelter, data.user.id);
     console.log(response);
+    router.push("/user/confirm");
   }
 }
 </script>
@@ -81,10 +81,28 @@ async function signUp(mail: string, pw: string) {
   align-items: center;
   background-color: $l-green;
 }
-.container input {
+.signup {
   border-radius: 12px;
   padding-left: 0.5rem;
   width: 300px;
+  height: 2rem;
+  border: transparent;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  margin: 1rem 0 0.5rem 0;
+}
+.info {
+  margin: 0.5rem 0 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+}
+.info input {
+  border-radius: 12px;
+  padding-left: 0.5rem;
+  width: 200px;
   height: 2rem;
   border: transparent;
   margin-bottom: 0.5rem;

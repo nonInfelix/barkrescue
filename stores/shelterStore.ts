@@ -24,6 +24,7 @@ export const useShelterStore = defineStore("shelter", {
     return {
       shelters: [] as Shelter[],
       dogs: [] as Dog[] | null,
+      currentID: "" as string,
     };
   },
   actions: {
@@ -38,7 +39,17 @@ export const useShelterStore = defineStore("shelter", {
         method: "POST",
         body: { shelter: shelter, user_id: userId },
       });
+      if (userId !== null) {
+        this.currentID = userId;
+      }
       return response;
+    },
+    async onUploadImage(img: FormData) {
+      const response = await $fetch<any>("/api/shelter/upload-logo", {
+        method: "POST",
+        body: img,
+      });
+      console.log(response);
     },
   },
 });
