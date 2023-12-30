@@ -1,15 +1,21 @@
 import { serverSupabaseClient } from "#supabase/server";
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
   const client = await serverSupabaseClient(event);
 
-  const { data, error } = await client.storage
-    .from("logos")
-    .upload("logo", body.img, {
-      cacheControl: "3600",
-      upsert: false,
-    });
+  //liest formdata aus Anfrage (body)
+  const formData = await readMultipartFormData(event);
 
-  return { data, error };
+  if (formData !== undefined) {
+    const file = Buffer.from(formData[0].data);
+    const fileName = formData[0].filename as string;
+
+    const { data, error } = await client.storage
+      .from("logos")
+      .upload(fileName, file, {
+        cacheControl: "3600",
+        upsert: false,
+      });
+    return { data, error };
+  }
 });

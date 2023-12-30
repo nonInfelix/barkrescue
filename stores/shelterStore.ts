@@ -44,7 +44,7 @@ export const useShelterStore = defineStore("shelter", {
       }
       return response;
     },
-    async onUploadImage(img: FormData) {
+    async onUploadImage(img: any) {
       const response = await $fetch<any>("/api/shelter/upload-logo", {
         method: "POST",
         body: img,
