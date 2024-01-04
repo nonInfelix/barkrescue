@@ -49,7 +49,7 @@ export const useShelterStore = defineStore("shelter", {
         method: "POST",
         body: img,
       });
-      console.log(response);
+      return response;
     },
   },
 });

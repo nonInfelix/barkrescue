@@ -1,5 +1,5 @@
 <template>
-  <div v-if="user" class="container">
+  <div v-if="user" class="container-small">
     <img :src="user.logo_img" alt="" />
     <h2>{{ user.name }}</h2>
     <p class="street">{{ user.street }} {{ user.street_number }}</p>
@@ -22,14 +22,14 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.container {
+.container-small {
   display: grid;
   grid-template-columns: 3fr 2fr;
   grid-template-rows: auto;
   border: 1px solid black;
   border-radius: 3px;
   padding: 0.5rem;
-  margin: 1rem;
+  margin: 1rem 0 1rem 0;
 }
 .street {
   grid-row: 2/3;
@@ -43,7 +43,7 @@ onMounted(async () => {
 .mail {
   grid-row: 5/6;
 }
-.container img {
+.container-small img {
   justify-self: center;
   align-self: center;
   max-width: 150px;
